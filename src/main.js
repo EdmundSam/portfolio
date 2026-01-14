@@ -5,6 +5,7 @@ import { museumPage } from "./Scenes/museum.js";
 import { restaurantPage } from "./Scenes/restaurant.js";
 import { housePage } from "./Scenes/housePage.js";
 import { schoolPage } from "./Scenes/school.js";
+import { towerPage } from "./Scenes/tower.js";
 
 async function main()
 {
@@ -27,6 +28,10 @@ async function main()
   
   k.scene("schoolPage", () => {
     schoolPage(k);
+  })
+
+  k.scene("towerPage", () => {
+    towerPage(k);
   })
 }
 

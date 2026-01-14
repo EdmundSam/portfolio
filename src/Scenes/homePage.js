@@ -88,6 +88,11 @@ export function homePage(k, roomData, sceneData = {})
             musicManager.stop();
             k.go("schoolPage");
         }
+        if (door.name === "Tower Door") {
+            console.log("Entering Tower");
+            musicManager.stop();
+            k.go("towerPage");
+        }
     });
 
     // Set up Quicklinks and notes
@@ -127,6 +132,7 @@ export function homePage(k, roomData, sceneData = {})
             <div style="font-size: 1.75vh;">Projects:<br></div>
             <a href="#" id="toRestaurant" style="color: #00d0ff; cursor: pointer;">Order Up!</a><br>
             <a href="#" id="toMuseum" style="color: #00d0ff; cursor: pointer;">Cat Burglars</a><br>
+            <a href="#" id="toTower" style="color: #00d0ff; cursor: pointer;">Typomancers</a><br>
         </div>
         `;
 
@@ -206,6 +212,12 @@ export function homePage(k, roomData, sceneData = {})
             e.preventDefault();
             console.log("Going to school page");
             k.go("schoolPage");
+        });
+
+        quickLinks.querySelector("#toTower").addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("Going to tower page");
+            k.go("towerPage");
         });
     } 
     

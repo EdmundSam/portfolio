@@ -4,63 +4,62 @@ export function housePage(k) {
     musicManager.play('./assets/Audio/House.wav');
 
     const houseOverlay = document.createElement("div");
-    
     houseOverlay.id = "house-overlay";
-    Object.assign(houseOverlay.style, {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-        overflowY: "auto",
-        background: "url('./assets/Images/Fireplace.png') no-repeat center center",
-        backgroundSize: "cover",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: "999",
-    });
+    houseOverlay.style.position = "fixed";
+    houseOverlay.style.top = "0";
+    houseOverlay.style.left = "0";
+    houseOverlay.style.width = "100%";
+    houseOverlay.style.height = "100%";
+    houseOverlay.style.background = "url('./assets/Images/Fireplace.png') no-repeat center center";
+    houseOverlay.style.backgroundSize = "cover";
+    houseOverlay.style.display = "flex";
+    houseOverlay.style.justifyContent = "center";
+    houseOverlay.style.alignItems = "center";
+    houseOverlay.style.zIndex = "999";
+    houseOverlay.style.overflow = "hidden"; // keep for custom scroll
 
     houseOverlay.innerHTML = `
         <!-- Close button -->
-        <button id="close-house" style="
-            position:fixed;
-            top:20px;
-            right:20px;
-            width:40px;
-            height:40px;
-            border-radius:50%;
-            font-size:22px;
-            font-weight:bold;
-            cursor:pointer;
-        ">✕</button>
+        <button 
+            id="close-house"
+            style="
+                position:fixed;
+                top:20px;
+                right:20px;
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                font-size:22px;
+                font-weight:bold;
+                cursor:pointer;
+            ">
+            ✕
+        </button>
 
         <!-- Credits -->
         <div style="
-                position: fixed;
-                bottom: .5vh;
-                left: .5vw;
-                color: white;
-                font-family: 'Pokemon';
-                font-size: 1.25vh;
-                padding: .5vh .5vw;
-                border-radius: 1vh;
-                white-space: normal;
-                word-wrap: break-word;
-                background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            bottom: .5vh;
+            left: .5vw;
+            color: white;
+            font-family: 'Pokemon';
+            font-size: 1.25vh;
+            padding: .5vh .5vw;
+            border-radius: 1vh;
+            background: rgba(0, 0, 0, 0.5);
+        ">
+            Custom Music:
+            <a href="https://www.youtube.com/@ronjoshtin" target="_blank" style="
+                color: #00d0ff;
+                text-decoration: underline;
+                cursor: pointer;
             ">
-                Custom Music: 
-                <a href="https://www.youtube.com/@ronjoshtin" target="_blank" style="
-                    color: #00d0ff;
-                    text-decoration: underline;
-                    cursor: pointer;
-                ">
-                Aaron Hipolito<br>
-                </a>
-                Art: ME!
+                Aaron Hipolito
+            </a><br>
+            Art: ME!
         </div>
 
-        <!-- Scrollable Panel -->
+        <!-- Panel -->
         <div id="house-panel" style="
             position: relative;
             width: 60%;
@@ -75,9 +74,10 @@ export function housePage(k) {
             <div id="house-content" style="
                 color: white;
                 text-align: center;
+                font-family: 'Pokemon';
             ">
-                <h1 style="font-size: 32px; font-family: Pokemon">About Me</h1>
-                <p style="font-size: 16px; font-family: Pokemon">
+                <h1 style="font-size: 32px;">About Me</h1>
+                <p style="font-size: 16px;">
                     Hi, I’m Edmund!<br><br> 
                     My path to game development wasn’t straightforward. I started in computer engineering, then, after graduating, drifted into IT and customer service while trying to figure out what I actually wanted to do. A year went by, and I realized that circuits, signals, and customer service definitely weren’t for me. I did really enjoy the coding aspect, but I’d always been someone who loved creative work, and I wanted something that combined both.<br><br>
                     Serendipitously, one of my passions is interior design. I love exploring furniture stores, touring homes, and watching renovation videos. It’s fascinating to see how different people create different atmospheres and experiences through design. I wanted to do something similar to that, while also utilizing the technical skills I picked up in school. I started to explore graduate programs to see if I could find anything that spoke to me.<br><br>
@@ -93,24 +93,30 @@ export function housePage(k) {
 
     const panel = document.querySelector("#house-panel");
 
-    // Scrollable overlay
-    houseOverlay.addEventListener("scroll", () => {
-        const scrollPos = houseOverlay.scrollTop;
+    // Custom scroll logic (unchanged)
+    let progress = 0;
+    const SCROLL_SPEED = 0.002;
+    const maxSlide = 66;
+    const finalTop = 5;
 
-        const maxSlide = 66; 
-        const finalTop = 5; 
+    houseOverlay.addEventListener(
+        "wheel",
+        (e) => {
+            e.preventDefault();
 
-        const limit = 300;
-        const progress = Math.min(scrollPos / limit, 1);
+            progress += e.deltaY * SCROLL_SPEED;
+            progress = Math.max(0, Math.min(progress, 1));
 
-        const newTop = maxSlide - (maxSlide - finalTop) * progress;
-
-        panel.style.top = `${newTop}vh`;
-    });
+            const newTop = maxSlide - (maxSlide - finalTop) * progress;
+            panel.style.top = `${newTop}vh`;
+        },
+        { passive: false }
+    );
 
     // Close button
     document.getElementById("close-house").addEventListener("click", () => {
         document.body.removeChild(houseOverlay);
+        musicManager.stop();
         k.go("HomePage", { spawn: "House Spawn" });
 
         const canvas = document.querySelector("canvas");

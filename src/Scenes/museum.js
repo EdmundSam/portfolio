@@ -19,7 +19,7 @@ export function museumPage(k) {
     museumOverlay.style.boxSizing = "border-box";
     museumOverlay.style.zIndex = "999";
     museumOverlay.innerHTML = `
-        <!-- Exit button -->
+        <!-- Close button -->
         <button 
             id="close-museum" 
             style="position:absolute; 

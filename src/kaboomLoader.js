@@ -21,7 +21,7 @@ k.loadSprite("PortfolioTileMap", "./sprites/PortfolioTileMap.png", {
 
 k.loadSprite("Buildings", "./sprites/Buildings.png", {
   sliceX: 17,
-  sliceY: 12
+  sliceY: 18
 });
 
 k.loadSprite("player", "./sprites/Character.png",
@@ -41,3 +41,4 @@ k.loadFont("Pokemon", "./assets/Fonts/PokemonClassic.ttf");
 k.loadFont("Charter", "./assets/Fonts/Charter.ttf");
 k.loadFont("Copperplate", "./assets/Fonts/Copperplate.otf");
 k.loadFont("BarlowXB", "./assets/Fonts/BarlowXB.ttf");
+k.loadFont("EagleLake", "./assets/Fonts/EagleLake-Regular.ttf");

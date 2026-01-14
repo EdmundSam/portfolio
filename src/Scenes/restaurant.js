@@ -3,22 +3,22 @@ import { musicManager } from "../entities/musicManager.js";
 export function restaurantPage(k) {
     musicManager.play('./assets/Audio/Restaurant.wav');
 
-    const overlay = document.createElement("div");
-    overlay.id = "orderup-overlay";
-    overlay.style.position = "fixed";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.width = "100%";
-    overlay.style.height = "100%";
-    overlay.style.background = "url('./assets/Images/Restaurant Background.png') repeat";
-    overlay.style.backgroundSize = "cover";
-    overlay.style.display = "flex";
-    overlay.style.justifyContent = "center";
-    overlay.style.alignItems = "center";
-    overlay.style.zIndex = "999";
-    overlay.style.overflow = "auto";
+    const restaurantOverlay = document.createElement("div");
+    restaurantOverlay.id = "orderup-overlay";
+    restaurantOverlay.style.position = "fixed";
+    restaurantOverlay.style.top = "0";
+    restaurantOverlay.style.left = "0";
+    restaurantOverlay.style.width = "100%";
+    restaurantOverlay.style.height = "100%";
+    restaurantOverlay.style.background = "url('./assets/Images/Restaurant Background.png') repeat";
+    restaurantOverlay.style.backgroundSize = "cover";
+    restaurantOverlay.style.display = "flex";
+    restaurantOverlay.style.justifyContent = "center";
+    restaurantOverlay.style.alignItems = "center";
+    restaurantOverlay.style.zIndex = "999";
+    restaurantOverlay.style.overflow = "auto";
 
-    overlay.innerHTML = `
+    restaurantOverlay.innerHTML = `
         <!-- Close button -->
         <button 
             id="close-restaurant" 
@@ -167,11 +167,11 @@ export function restaurantPage(k) {
         </div>
     `;
 
-    document.body.appendChild(overlay);
+    document.body.appendChild(restaurantOverlay);
 
     // Close Button
     document.getElementById("close-restaurant").addEventListener("click", () => {
-        document.body.removeChild(overlay);
+        document.body.removeChild(restaurantOverlay);
         musicManager.stop();
         k.go("HomePage", { spawn: "Restaurant Spawn" });
 
