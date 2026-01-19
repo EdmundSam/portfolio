@@ -55,9 +55,6 @@ export function intro(k) {
         if (canvas) canvas.focus();
     };
 
-    // ✅ Mouse handled by DOM
     introOverlay.addEventListener("click", proceed);
-
-    // ✅ Keyboard handled by Kaboom
     k.onKeyPress(["space", "enter"], proceed);
 }
