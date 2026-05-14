@@ -33,10 +33,55 @@ export function schoolPage(k) {
             >✕
         </button>
 
-        <!-- Resume -->
-        <div style="width:28%; height:75%">
-            <a href='./assets/Images/Resume.pdf' target='_blank'>
-                <img src="./assets/Images/ResumeImage.png" alt='Resume' style='width:100%; height:100%; display:block; cursor:pointer;'>
+        <!-- Resume Container -->
+        <div
+            style="
+                position: relative;
+                width: 25%;
+                aspect-ratio: 8.5 / 11;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            "
+        >
+            <!-- Paper Background -->
+            <img 
+                src="./assets/Images/ResumePaper.png" 
+                alt="Resume Paper"
+                style="
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    object-fit: contain;
+                "
+            >
+
+            <!-- Clickable Resume Image -->
+            <a
+                href="./assets/Images/Resume.pdf"
+                target="_blank"
+                style="
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 93%;
+                    height: 95%;
+                    transform: translate(-50%, -50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                "
+            >
+                <img
+                    src="./assets/Images/ResumeImage.png"
+                    alt="Resume Preview"
+                    style="
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        display: block;
+                    "
+                >
             </a>
         </div>
 
