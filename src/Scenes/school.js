@@ -56,7 +56,7 @@ export function schoolPage(k) {
                 "
             >
 
-            <!-- Clickable Resume Image -->
+            <!-- Resume Image -->
             <a
                 href="./assets/Images/Resume.pdf"
                 target="_blank"
