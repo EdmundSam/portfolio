@@ -533,7 +533,7 @@ export function museumPage(k) {
             <!-- Playtesting / Iteration -->
             <div style="
                 padding: 24px;
-                background: rgba(185, 236, 252, 0.25);
+                background: rgba(185, 236, 252, 0.4);
                 border-left: 3px solid rgba(255,255,255,0.5);
             ">
                 <h2>Playtesting & Iteration</h2>
@@ -551,7 +551,7 @@ export function museumPage(k) {
             <!-- Lessons Learned & Looking Forward -->
             <div style="
                 padding: 24px;
-                background: rgba(185, 236, 252, 0.25);
+                background: rgba(185, 236, 252, 0.4);
                 border-left: 3px solid rgba(255,255,255,0.5);
             ">
                 <h2>Lessons Learned & Looking Forward</h2>
